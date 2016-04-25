@@ -1,0 +1,263 @@
+\documentclass[20pt, a0paper, portrait]{tikzposter}
+
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern} 
+\usepackage{fourier} 
+\usepackage{amsmath} 
+\usepackage{blindtext}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{boolexpr}
+\usepackage{multicol}
+\setlength{\columnsep}{1.4cm}
+
+\usetikzlibrary{arrows, decorations.markings}
+
+\definecolor{tublue}{HTML}{3571A1}
+\definecolor{tulightblue}{HTML}{589DD4}
+\definecolor{tuorange}{HTML}{F6C07C}
+
+\defineblockstyle{myDefault}{
+    titlewidthscale=.94, bodywidthscale=1, titleleft,
+    titleoffsetx=0pt, titleoffsety=0pt, bodyoffsetx=0pt, bodyoffsety=0pt,
+    bodyverticalshift=0pt, roundedcorners=0, linewidth=0.1cm,
+    titleinnersep=.5cm, bodyinnersep=1cm
+}{
+    \begin{scope}[line width=\blocklinewidth, rounded corners=\blockroundedcorners]
+       \ifBlockHasTitle %
+           \draw[draw=none]%, fill=blockbodybgcolor]
+               (blockbody.south west) rectangle (blocktitle.north east);
+           \draw[color=tulightblue, loosely dashed]
+               (blocktitle.south west) -- (blocktitle.south east);%
+       \else
+             \draw[draw=none]%, fill=blockbodybgcolor]
+                 (blockbody.south west) rectangle (blockbody.north east);
+        \fi
+    \end{scope}
+}
+
+\definetitlestyle{myWave}{
+    width=\paperwidth, roundedcorners=0, linewidth=0pt, innersep=1.5cm,
+    titletotopverticalspace=0mm, titletoblockverticalspace=25mm,
+    titlegraphictotitledistance=10pt, titletextscale=2
+}{
+    \coordinate (topleft) at (\titleposleft,\titlepostop);
+    \coordinate (topright) at (\titleposright,\titlepostop);
+    \coordinate (lefttoright) at (\titlewidth,0);
+    \coordinate (head) at (0,\titlepostop-\titleposbottom);
+    \coordinate (bottomright) at (\titleposright,0);
+    %
+    \draw[draw=none, left color=tublue, right color=tublue]%
+        (topright) -- %
+        (topleft) -- %
+        ($(topleft) - (head)$) -- %
+        ($(topright) - (head)$) -- cycle; %
+    \draw[draw=none, left color=tuorange, right color=tuorange]%
+        ($(topright) - (head)$ ) --  %
+        ($(topleft) - (head)$) -- %
+        ($(topleft) - (head)-(0,.5)$) -- %
+        ($(topright) - (head)-(0,.5)$) -- cycle; %
+    \draw[draw=none, left color=tulightblue, right color=tulightblue]%
+        ($(topright) - (head)-(0,.5)$ ) --  %
+        ($(topleft) - (head)-(0,.5)$) -- %
+        ($(topleft) - (head)-(0,1.2)$) -- %
+        ($(topright) - (head)-(0,1.2)$) -- cycle; %
+    \draw[draw=none, left color=tublue, right color=tublue]%
+        ($(topright) - (head)-(0,1.2)$ ) --  %
+        ($(topleft) - (head)-(0,1.2)$) -- %
+        ($(topleft) - (head)-(0,1.5)$) -- %
+        ($(topright) - (head)-(0,1.5)$) -- cycle; %
+    \draw[draw=none, left color=tublue, right color=tublue]%
+        (bottomleft) --  %
+        ($(bottomleft) + (\titlewidth, 0)$) -- %
+        ($(bottomleft) + (\titlewidth, 8)$) -- %
+        ($(bottomleft) + (0, 8)$) -- cycle; %
+    \draw[draw=none, left color=tuorange, right color=tuorange]%
+        ($(bottomleft) + (0, 8)$) -- %
+        ($(bottomleft) + (\titlewidth, 8)$) -- %
+        ($(bottomleft) + (\titlewidth, 8.5)$) -- %
+        ($(bottomleft) + (0, 8.5)$) -- cycle; %
+    \draw[draw=none, left color=tulightblue, right color=tulightblue]%
+        ($(bottomleft) + (0, 8.5)$) -- %
+        ($(bottomleft) + (\titlewidth, 8.5)$) -- %
+        ($(bottomleft) + (\titlewidth, 9.2)$) -- %
+        ($(bottomleft) + (0, 9.2)$) -- cycle; %
+    \draw[draw=none, left color=tublue, right color=tulightblue]%
+        ($(bottomleft) + (0, 9.2)$) -- %
+        ($(bottomleft) + (\titlewidth, 9.2)$) -- %
+        ($(bottomleft) + (\titlewidth, 9.5)$) -- %
+        ($(bottomleft) + (0, 9.5)$) -- cycle; %
+}
+
+\definecolorpalette{sampleColorPalette} {
+  \definecolor{colorOne}{named}{tublue}
+  \definecolor{colorTwo}{named}{tuorange}
+  \definecolor{colorThree}{named}{tulightblue}
+}
+
+\definecolorstyle{sampleColorStyle} {
+  \definecolor{colorOne}{named}{blue}
+  \definecolor{colorTwo}{named}{yellow}
+  \definecolor{colorThree}{named}{orange}
+  }{
+  % Background Colors
+  \colorlet{backgroundcolor}{white}
+  \colorlet{framecolor}{white}
+  % Title Colors
+  \colorlet{titlefgcolor}{white}
+  \colorlet{titlebgcolor}{tublue}
+  % Block Colors
+  \colorlet{blocktitlebgcolor}{white}
+  \colorlet{blocktitlefgcolor}{tublue}
+  \colorlet{blockbodybgcolor}{white}
+  \colorlet{blockbodyfgcolor}{black}
+  % Innerblock Colors
+  \colorlet{innerblocktitlebgcolor}{white}
+  \colorlet{innerblocktitlefgcolor}{black}
+  \colorlet{innerblockbodybgcolor}{black}
+  \colorlet{innerblockbodyfgcolor}{black}
+  % Note colors
+  \colorlet{notefgcolor}{black}
+  \colorlet{notebgcolor}{colorTwo!50!white}
+  \colorlet{noteframecolor}{colorTwo}
+}
+
+\definenotestyle{myNotestyle}{ targetoffsetx=0pt, targetoffsety=0pt,
+  angle=45, radius=8cm, width=6cm, connection=true, rotate=0, roundedcorners=0,
+  linewidth=1pt, innersep=0pt%
+}{ \ifNoteHasConnection \draw[thick] (notecenter) -- (notetarget)
+  node{$\bullet$}; \fi
+  \draw[draw=notebgcolor,fill=notebgcolor,rotate=\noterotate] (notecenter.south
+  west) rectangle (notecenter.north east); }
+
+\definelayouttheme{sample}{
+  \usecolorstyle[colorPalette=sampleColorPalette]{sampleColorStyle}
+  \usebackgroundstyle{sample}
+  \usetitlestyle{myWave}
+  \useblockstyle{myDefault}
+  \useinnerblockstyle{Minimal}
+  \usenotestyle{myNotestyle}
+}
+
+\usetheme{sample}
+
+\defineblockstyle{MyBlock}{% define a custom style for a block
+    titleoffsetx=0pt, titleoffsety=0pt, bodyoffsetx=0pt, bodyoffsety=0pt,
+    bodyverticalshift=0pt, roundedcorners=22, linewidth=5pt,
+    titleinnersep=00mm, bodyinnersep=0mm
+}{
+}
+% \newcommand\figureblock[3][MyBlock]{\useblockstyle{#1}\block{#2}{#3}\useblockstyle{Basic}}
+\newcommand\figureblock[3][MyBlock]{\useblockstyle{#1}\block{#2}{#3}\useblockstyle{myDefault}}
+
+% \settitle{ \vbox{ \centering \color{titlefgcolor} \Huge \textbf{\textsf{\@title}}
+% \\ \@author~ \\ \@institute \\[1em] \@titlegraphic } }
+
+% \settitle{ \vbox{ \centering \color{titlefgcolor} {\Huge \textbf{\textsf{\@title}}}
+% \\ [1em] {\LARGE \textsf{\@author~}} \\ [1em] {\Large \textsf{\@institute} }} }
+
+% \settitle{ \begin{columns} \column{0.2} \@titlegraphic \column{0.8} \vbox{ \centering \color{titlefgcolor} {\Huge \textbf{\textsf{\@title}}}
+% \\ [1em] {\LARGE \textsf{\@author~}} \\ [1em] {\Large \textsf{\@institute} }} \end{columns}}
+
+\settitle{
+  \begin{minipage}{0.1\linewidth}
+      \centering
+      \@titlegraphic
+  \end{minipage}%
+  \hspace{7.5cm}
+  \begin{minipage}{0.6\linewidth}
+        \centering
+        \color{titlefgcolor}
+        {\bfseries \sffamily \Huge \@title \par}
+        \vspace*{1em}
+        {\LARGE \sffamily \@author \par}
+        \vspace*{1em}
+        {\Large \sffamily \@institute \par}
+        \vspace*{1em}
+        {\large \sffamily \@date}
+    \end{minipage}%
+  \hspace{2cm}
+  \begin{minipage}{0.1\linewidth}
+         \includegraphics[scale=0.85]{graphics/HSAFLogo.jpg}
+    \end{minipage}%
+}
+
+\title{An enhanced soil moisture product from the ERS scatterometers}
+\author{\underline{Christoph Reimer}, Isabella Pfeil and Wolfgang Wagner}
+\date{ESA Living Planet Symposium, 9-13 May 2016, Prague, Czech Republic}
+\titlegraphic{\includegraphics[scale=1.]{graphics/TULogo.png}}
+\institute{Vienna University of Technology, Department of Geodesy and Geoinformation}
+ 
+\begin{document}
+ 
+  \maketitle
+
+  \node[draw=none, rectangle, minimum width = .6cm, align=left, inner sep = 1cm,
+  text=white, text width = 37cm, anchor=west] at (-42,-55)
+  {\begin{enumerate}[{[1]}] \color{white} \item W. Wagner, G. Lemoine, and H.
+      Rott, A method for estimating soil moisture from\\ ERS scatterometer and
+      soil data, Remote Sensing of Environment, vol. 70, no. 2, pp. 191–207,
+      1999. \item W. Wagner, G. Lemoine, M. Borgeaud, and H. Rott, ``A study of
+      vegetation cover effects on ERS scatterometer data,'' \\ IEEE Transactions
+      on Geoscience and Remote Sensing, vol. 37, no. 2II, pp. 938–948,
+      1999. \item M. Vreugdenhil, W. A. Dorigo, W. Wagner, R. A. M. de Jeu, S.
+      Hahn, and M. J. E. van Marle, ``Analyzing the Vegetation Parameterization
+      in the TU-Wien ASCAT Soil Moisture Retrieval,'' IEEE TGRS, pp. 1–19,
+      2016. \end{enumerate}};
+
+  \node[draw=none, minimum width = 6cm, text width = 25cm, align=justify, inner
+  sep = 1cm, text=white, anchor=west] at (-2,-55) {\textbf{Acknowledgments}\\ The
+    authors would like to acknowledge the ESA Scatterometer Competence Center (SCIRoCCo) for their funding support. \\ \underline{http://scirocco.serco.it}};
+
+  \node[draw=none, minimum width = 6cm, right=.5, align=right, text=white, inner sep = 1cm]
+  at (26,-55) {\textbf{Christoph Reimer}\\ Vienna University of
+    Technology\\ Department of Geodesy and Geoinformation\\ E-mail:
+    christoph.reimer@geo.tuwien.ac.at\\ Web: http://rs.geo.tuwien.ac.at};
+
+  \draw [color=tuorange, fill=tuorange] (-40,29.5) rectangle (-15,16.5);
+
+  \begin{columns}
+
+    \column{.3333} 
+
+    \block{Introduction \phantom{p}}{Geophysical parameters derived from
+      space-borne Earth Observation Systems are either assigned to discrete
+      points on a fixed Earth grid (e.g. regular lat/lon grid) or located on
+      orbital point nodes with a customized arrangement, often in-line with the
+      instrument's measurement geometry. The driving factors of the choice and
+      structure of the underlying grid are typically spatial resolution,
+      instrument geometry, instrument measurement technique and application. In
+      this context, the most practical solution for the choice of the sampling
+      distance represents supporting the Nyquist–Shannon sampling theorem. In
+      other words, the spatial sampling rate should be half of the spatial
+      resolution establishing a sufficient condition to capture all the
+      information from the continuous-spatial signal.\\
+
+      In this study we propose a new global fixed Earth grid, the so-called
+      Equi1 grid, and demonstrate its structure, usability and field of
+      application. The grid construction follows the aforementioned condition of
+      the Nyquist-Shannon sampling theorem, by applying a nearly-constant
+      spatial sampling rate. The general appearance is similar to a Reduced
+      Gaussian Grid, which represents a gridded coordinate system often used for
+      scientific modeling on the Earth surface. The properties of the Equi1 grid
+      are compared to common Earth observation grid systems (e.g. EASE-grid,
+      Gaussian Grid) discussing the advantages and disadvantages. Finally, a
+      real-world example will be presented based on surface soil moisture
+      information derived from Metop ASCAT.}
+
+    % \block{Grid \phantom{p}}{asdf}
+
+    % \column{.3333} 
+
+    % \block{Cross-over angle concept}{asdf}
+
+    % \column{.3333} 
+
+    % \block{Results and discussion \phantom{p}}{asdf}
+
+    % \block{Conclusion \phantom{p}}{asdf}
+
+  \end{columns}
+
+\end{document}
