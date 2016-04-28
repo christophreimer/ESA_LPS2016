@@ -1,0 +1,149 @@
+% load packages
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage[sfdefault,light]{roboto}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath} 
+\usepackage{blindtext}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{boolexpr}
+\usepackage{multicol}
+\usetikzlibrary{arrows, decorations.markings}
+
+% define default font
+\renewcommand{\familydefault}{\sfdefault}
+
+% define column separation
+\setlength{\columnsep}{2cm}
+
+% color definitions
+\definecolor{tublue}{HTML}{3571A1}
+\definecolor{tulightblue}{HTML}{589DD4}
+\definecolor{tuorange}{HTML}{F6C07C}
+
+% block style definitions
+\defineblockstyle{myDefault}{titlewidthscale=1, bodywidthscale=1, titleleft, titleoffsetx=0pt, titleoffsety=0cm, bodyoffsetx=0cm, bodyoffsety=-1cm, bodyverticalshift=0pt, roundedcorners=0, linewidth=0.1cm, titleinnersep=.05cm, bodyinnersep=0cm}
+{\begin{scope}[line width=\blocklinewidth, rounded corners=\blockroundedcorners]
+    \ifBlockHasTitle
+        %\draw[draw=none]
+        %    (blockbody.south west) rectangle (blocktitle.north east);
+        \draw[color=tuorange, solid, line width=2mm]
+        (blocktitle.south west) -- (blocktitle.south east);
+        %\draw[color=tublue, solid, line width=2mm]
+        %([yshift=-2mm]blocktitle.south west) -- ([yshift=-2mm]blocktitle.south east);
+    \else
+        \draw[draw=none]
+            (blockbody.south west) rectangle (blockbody.north east);
+    \fi
+\end{scope}}
+
+% define title style
+\definetitlestyle{myWave}{width=\paperwidth, roundedcorners=0, linewidth=0pt, innersep=1.5cm, titletotopverticalspace=0mm, titletoblockverticalspace=25mm, titlegraphictotitledistance=10pt, titletextscale=2}
+{
+    \coordinate (topleft) at (\titleposleft,\titlepostop);
+    \coordinate (topright) at (\titleposright,\titlepostop);
+    \coordinate (lefttoright) at (\titlewidth,0);
+    \coordinate (head) at (0,\titlepostop-\titleposbottom);
+    \coordinate (bottomright) at (\titleposright,0);
+    %
+    \draw[draw=none, left color=tublue, right color=tublue]%
+        (topright) -- %
+        (topleft) -- %
+        ($(topleft) - (head)$) -- %
+        ($(topright) - (head)$) -- cycle; %
+    \draw[draw=none, left color=tuorange, right color=tuorange]%
+        ($(topright) - (head)$ ) --  %
+        ($(topleft) - (head)$) -- %
+        ($(topleft) - (head)-(0,.5)$) -- %
+        ($(topright) - (head)-(0,.5)$) -- cycle; %
+    \draw[draw=none, left color=tulightblue, right color=tulightblue]%
+        ($(topright) - (head)-(0,.5)$ ) --  %
+        ($(topleft) - (head)-(0,.5)$) -- %
+        ($(topleft) - (head)-(0,1.2)$) -- %
+        ($(topright) - (head)-(0,1.2)$) -- cycle; %
+    \draw[draw=none, left color=tublue, right color=tublue]%
+        ($(topright) - (head)-(0,1.2)$ ) --  %
+        ($(topleft) - (head)-(0,1.2)$) -- %
+        ($(topleft) - (head)-(0,1.5)$) -- %
+        ($(topright) - (head)-(0,1.5)$) -- cycle; %
+    \draw[draw=none, left color=tublue, right color=tublue]%
+        (bottomleft) --  %
+        ($(bottomleft) + (\titlewidth, 0)$) -- %
+        ($(bottomleft) + (\titlewidth, 8)$) -- %
+        ($(bottomleft) + (0, 8)$) -- cycle; %
+    \draw[draw=none, left color=tuorange, right color=tuorange]%
+        ($(bottomleft) + (0, 8)$) -- %
+        ($(bottomleft) + (\titlewidth, 8)$) -- %
+        ($(bottomleft) + (\titlewidth, 8.5)$) -- %
+        ($(bottomleft) + (0, 8.5)$) -- cycle; %
+    \draw[draw=none, left color=tulightblue, right color=tulightblue]%
+        ($(bottomleft) + (0, 8.5)$) -- %
+        ($(bottomleft) + (\titlewidth, 8.5)$) -- %
+        ($(bottomleft) + (\titlewidth, 9.2)$) -- %
+        ($(bottomleft) + (0, 9.2)$) -- cycle; %
+    \draw[draw=none, left color=tublue, right color=tulightblue]%
+        ($(bottomleft) + (0, 9.2)$) -- %
+        ($(bottomleft) + (\titlewidth, 9.2)$) -- %
+        ($(bottomleft) + (\titlewidth, 9.5)$) -- %
+        ($(bottomleft) + (0, 9.5)$) -- cycle; %
+}
+
+% define color palette
+\definecolorpalette{sampleColorPalette} {
+  \definecolor{colorOne}{named}{tublue}
+  \definecolor{colorTwo}{named}{tuorange}
+  \definecolor{colorThree}{named}{tulightblue}
+}
+
+% set color styles
+\definecolorstyle{sampleColorStyle} {
+  \definecolor{colorOne}{named}{blue}
+  \definecolor{colorTwo}{named}{yellow}
+  \definecolor{colorThree}{named}{orange}
+  }{
+  % Background Colors
+  \colorlet{backgroundcolor}{white}
+  \colorlet{framecolor}{white}
+  % Title Colors
+  \colorlet{titlefgcolor}{white}
+  \colorlet{titlebgcolor}{tublue}
+  % Block Colors
+  \colorlet{blocktitlebgcolor}{white}
+  \colorlet{blocktitlefgcolor}{tublue}
+  \colorlet{blockbodybgcolor}{white}
+  \colorlet{blockbodyfgcolor}{black}
+  % Innerblock Colors
+  \colorlet{innerblocktitlebgcolor}{white}
+  \colorlet{innerblocktitlefgcolor}{black}
+  \colorlet{innerblockbodybgcolor}{black}
+  \colorlet{innerblockbodyfgcolor}{black}
+  % Note colors
+  \colorlet{notefgcolor}{black}
+  \colorlet{notebgcolor}{colorTwo!50!white}
+  \colorlet{noteframecolor}{colorTwo}
+}
+
+% define note style
+\definenotestyle{myNotestyle}{targetoffsetx=0pt, targetoffsety=0pt, angle=45, radius=8cm, width=6cm, connection=true, rotate=0, roundedcorners=0, linewidth=1pt, innersep=0pt}
+{
+  \ifNoteHasConnection
+      \draw[thick] (notecenter) -- (notetarget)
+      node{$\bullet$};
+  \fi
+  \draw[draw=notebgcolor,fill=notebgcolor,rotate=\noterotate](notecenter.south west) rectangle (notecenter.north east);
+}
+
+% define final poster layout
+\definelayouttheme{sample}{
+  \usecolorstyle[colorPalette=sampleColorPalette]{sampleColorStyle}
+  \usebackgroundstyle{sample}
+  \usetitlestyle{myWave}
+  \useblockstyle{myDefault}
+  \useinnerblockstyle{Minimal}
+  \usenotestyle{myNotestyle}
+}
+
+\usetheme{sample}
+
