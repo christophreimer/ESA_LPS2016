@@ -1,4 +1,4 @@
-\documentclass[20pt, a0paper, portrait]{tikzposter}
+\documentclass[20pt, a0paper, portrait, innermargin=3cm, colspace=2.5cm]{tikzposter}
 
 \input{poster_definition}
 
@@ -66,57 +66,16 @@
 
     \column{.5} 
 
-    \block{..:: MOTIVATION ::..}{Geophysical parameters derived from
-      space-borne Earth Observation Systems are either assigned to discrete
-      points on a fixed Earth grid (e.g. regular lat/lon grid) or located on
-      orbital point nodes with a customized arrangement, often in-line with the
-      instrument's measurement geometry. The driving factors of the choice and
-      structure of the underlying grid are typically spatial resolution,
-      instrument geometry, instrument measurement technique and application. In
-      this context, the most practical solution for the choice of the sampling
-      distance represents supporting the Nyquist–Shannon sampling theorem. In
-      other words, the spatial sampling rate should be half of the spatial
-      resolution establishing a sufficient condition to capture all the
-      information from the continuous-spatial signal.\\
+    \block{Motivation}{The first global soil moisture product derived from the scatterometer (ESCAT) on-board ERS was generated in the year 2000 by making use of the TU-Wien soil moisture algorithm. In the framework of the ESA funded project SCIRoCCo, this data archive was reconsidered with the objective to create the most complete and consistent ESCAT soil moisture products.
+    , L1 processor, Coverage}
 
-      In this study we propose a new global fixed Earth grid, the so-called
-      Equi1 grid, and demonstrate its structure, usability and field of
-      application. The grid construction follows the aforementioned condition of
-      the Nyquist-Shannon sampling theorem, by applying a nearly-constant
-      spatial sampling rate. The general appearance is similar to a Reduced
-      Gaussian Grid, which represents a gridded coordinate system often used for
-      scientific modeling on the Earth surface. The properties of the Equi1 grid
-      are compared to common Earth observation grid systems (e.g. EASE-grid,
-      Gaussian Grid) discussing the advantages and disadvantages. Finally, a
-      real-world example will be presented based on surface soil moisture
-      information derived from Metop ASCAT.}
+    \block{RADIOMETRIC STABILITY}{Calibration Results}
 
     \column{.5} 
 
-    \block{INTRODUCTION}{Geophysical parameters derived from
-      space-borne Earth Observation Systems are either assigned to discrete
-      points on a fixed Earth grid (e.g. regular lat/lon grid) or located on
-      orbital point nodes with a customized arrangement, often in-line with the
-      instrument's measurement geometry. The driving factors of the choice and
-      structure of the underlying grid are typically spatial resolution,
-      instrument geometry, instrument measurement technique and application. In
-      this context, the most practical solution for the choice of the sampling
-      distance represents supporting the Nyquist–Shannon sampling theorem. In
-      other words, the spatial sampling rate should be half of the spatial
-      resolution establishing a sufficient condition to capture all the
-      information from the continuous-spatial signal.\\
+    \block{PRODUCTS}{TS and orbit, spatial resolution}
 
-      In this study we propose a new global fixed Earth grid, the so-called
-      Equi1 grid, and demonstrate its structure, usability and field of
-      application. The grid construction follows the aforementioned condition of
-      the Nyquist-Shannon sampling theorem, by applying a nearly-constant
-      spatial sampling rate. The general appearance is similar to a Reduced
-      Gaussian Grid, which represents a gridded coordinate system often used for
-      scientific modeling on the Earth surface. The properties of the Equi1 grid
-      are compared to common Earth observation grid systems (e.g. EASE-grid,
-      Gaussian Grid) discussing the advantages and disadvantages. Finally, a
-      real-world example will be presented based on surface soil moisture
-      information derived from Metop ASCAT.}
+    \block{VALIDATION}{ISMN and ERAINT}
 
   \end{columns}
 
