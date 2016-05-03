@@ -66,16 +66,38 @@
 
     \column{.5} 
 
-    \block{Motivation}{The first global soil moisture product derived from the scatterometer (ESCAT) on-board ERS was generated in the year 2000 by making use of the TU-Wien soil moisture algorithm. In the framework of the ESA funded project SCIRoCCo, this data archive was reconsidered with the objective to create the most complete and consistent ESCAT soil moisture products.
-    , L1 processor, Coverage}
+    \block{MOTIVATION}{
+      The first global soil moisture product from the scatterometer (ESCAT) on-board the ERS-1/2 missions was derived in the year 2000 by making use of the TU-Wien soil moisture algorithm [1]. 
+      The ERS missions, especially ERS-2, underwent a number of major mission events (Figure \ref{figures:mission_events}) affecting the final soil moisture retrievals.       
+      In the framework of the ESA funded project SCIRoCCo, this data archive was reconsidered with the objective to create the most complete and consistent ESCAT soil moisture products, taking full advantage of state of the art Level 1 and Level 2 scatterometer processors. 
+      \begin{center}
+        \begin{tikzfigure}[ERS-2 major mission events. \label{figures:mission_events}] 
+          \includegraphics[width=0.45\textwidth]{figures/ERS_mission_overview.png}
+        \end{tikzfigure}
+      \end{center}
+    }
+
+    \block{Algorithmic Improvements (WARP 5.0 vs WARP 5.6)}{
+      \begin{itemize}
+        \item{Implementation/Improvements of Error Model.}
+        \item{Improvement of Spatial Resampling}
+        \item{Calculation of Freeze/Thaw parameter and corresponding Surface State Flags (SSF).}
+        \item{Sensor Intra- / Inter-calibration}
+      \end{itemize}
+      
+    }
 
     \block{RADIOMETRIC STABILITY}{Calibration Results}
 
     \column{.5} 
 
-    \block{PRODUCTS}{TS and orbit, spatial resolution}
+    \block{Product Overview}{TS and orbit, spatial resolution}
 
-    \block{VALIDATION}{ISMN and ERAINT}
+    \block{Validation Results}{ISMN and ERAINT}
+
+    \block{Access the Data}{
+      
+    }
 
   \end{columns}
 
