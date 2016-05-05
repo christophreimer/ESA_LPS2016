@@ -1,5 +1,5 @@
-\documentclass[20pt, a0paper, portrait, innermargin=3cm, colspace=2.5cm]{tikzposter}
-
+\documentclass[25pt, a0paper, portrait, innermargin=4cm, colspace=2.5cm]{tikzposter}
+\geometry{paperwidth=80cm}
 \input{poster_definition}
 
 \title{An enhanced Soil Moisture product from \\ the ERS Scatterometers}
@@ -39,26 +39,21 @@
 \begin{document}
  
   \maketitle
-
-  \node[draw=none, rectangle, minimum width = .6cm, align=left, inner sep = 1cm,
-  text=white, text width = 37cm, anchor=west] at (-42,-55)
-  {\begin{enumerate}[{[1]}] \color{white} \item W. Wagner, G. Lemoine, and H.
-      Rott, A method for estimating soil moisture from\\ ERS scatterometer and
-      soil data, Remote Sensing of Environment, vol. 70, no. 2, pp. 191–207,
-      1999. \item W. Wagner, G. Lemoine, M. Borgeaud, and H. Rott, ``A study of
-      vegetation cover effects on ERS scatterometer data,'' \\ IEEE Transactions
-      on Geoscience and Remote Sensing, vol. 37, no. 2II, pp. 938–948,
-      1999. \item M. Vreugdenhil, W. A. Dorigo, W. Wagner, R. A. M. de Jeu, S.
-      Hahn, and M. J. E. van Marle, ``Analyzing the Vegetation Parameterization
-      in the TU-Wien ASCAT Soil Moisture Retrieval,'' IEEE TGRS, pp. 1–19,
-      2016. \end{enumerate}};
+  % (-42,-55)
+  \node[draw=none, rectangle, minimum width = .6cm, align=justify, inner sep = 1cm,
+  text=white, text width=30cm, anchor=west] at ($(bottomleft) + (footerheight) - (0, 2.)$) 
+  {\begin{enumerate}[{[1]}] \color{white}
+    \item W. Wagner, G. Lemoine, and H.Rott, A method for estimating soil moisture from ERS scatterometer and soil data, Remote Sensing of Environment, vol. 70, no. 2, pp. 191–207, 1999.
+    \item R. Crapolicchio, G. De Chiara, A. Elyouncha, P. Lecomte, X. Neyt, A. Paciucci and M. Talone, ERS-2 Scatterometer: Mission Performances and Current Reprocessing Achievements, IEEE TGRS, vol. 50, no.7, pp. 2427-2448, 2012
+   \end{enumerate}};
 
   \node[draw=none, minimum width = 6cm, text width = 25cm, align=justify, inner
   sep = 1cm, text=white, anchor=west] at (-2,-55) {\textbf{Acknowledgments}\\ The
     authors would like to acknowledge the ESA Scatterometer Competence Center (SCIRoCCo) for their funding support. \\ \underline{http://scirocco.serco.it}};
-
-  \node[draw=none, minimum width = 6cm, right=.5, align=right, text=white, inner sep = 1cm]
-  at (26,-55) {\textbf{Christoph Reimer}\\ Vienna University of
+  %  (26,-55)
+  \node[draw=none, minimum width = 6cm, right=.5, align=right, text=white, inner sep = 1cm, anchor=west]
+  at (23, -55)
+  {\textbf{Christoph Reimer}\\ Vienna University of
     Technology\\ Department of Geodesy and Geoinformation\\ E-mail:
     christoph.reimer@geo.tuwien.ac.at\\ Web: http://rs.geo.tuwien.ac.at};  
 
@@ -66,37 +61,86 @@
 
     \column{.5} 
 
-    \block{MOTIVATION}{
+    \block{Motivation \phantom{Product Overview}}{
       The first global soil moisture product from the scatterometer (ESCAT) on-board the ERS-1/2 missions was derived in the year 2000 by making use of the TU-Wien soil moisture algorithm [1]. 
-      The ERS missions, especially ERS-2, underwent a number of major mission events (Figure \ref{figures:mission_events}) affecting the final soil moisture retrievals.       
-      In the framework of the ESA funded project SCIRoCCo, this data archive was reconsidered with the objective to create the most complete and consistent ESCAT soil moisture products, taking full advantage of state of the art Level 1 and Level 2 scatterometer processors. 
+      The ERS missions, especially ERS-2, underwent a number of major mission events (Figure~\ref{figures:mission_events}) affecting the final soil moisture retrievals.       
+      In the framework of the ESA funded project SCIRoCCo, this data archive was reconsidered with the objective to create the most complete and consistent ESCAT soil moisture products, taking full advantage of state of the art Level 1 and Level 2 scatterometer processor.
+      
       \begin{center}
-        \begin{tikzfigure}[ERS-2 major mission events. \label{figures:mission_events}] 
+        \begin{tikzfigure}[ERS-2 major mission events.\label{figures:mission_events}] 
           \includegraphics[width=0.45\textwidth]{figures/ERS_mission_overview.png}
         \end{tikzfigure}
       \end{center}
     }
 
-    \block{Algorithmic Improvements (WARP 5.0 vs WARP 5.6)}{
-      \begin{itemize}
-        \item{Implementation/Improvements of Error Model.}
-        \item{Improvement of Spatial Resampling}
-        \item{Calculation of Freeze/Thaw parameter and corresponding Surface State Flags (SSF).}
-        \item{Sensor Intra- / Inter-calibration}
-      \end{itemize}
+    \block{Soil Moisture Retrieval -- Algorithm Improvements}{
+      The TU-Wien soil moisture algorithm is a physically motivated change detection approach implemented in a software called the Water Retrieval Package (WARP).
       
+      Since the first release of global soil moisture observations from ESCAT, algorithmic improvements have been implemented into WARP with focus on the retrieval for ASCAT.
+      
+      
+      \begin{center}
+        \begin{tikzfigure}[Flow chart.\label{figures:flow_chart}] 
+          \includegraphics[width=0.7\blockwidth]{figures/WARP_processing_steps.pdf}
+        \end{tikzfigure}
+      \end{center}
     }
 
-    \block{RADIOMETRIC STABILITY}{Calibration Results}
 
     \column{.5} 
 
-    \block{Product Overview}{TS and orbit, spatial resolution}
+    \block{Product Overview \phantom{Motivation}}{
+      Soil Moisture products from ERS ESCAT are available in the Swath-Grid or Time-Series format.
+      The Swath-Grid product is foreseen for NWP centers, to complement the operational disseminated ASCAT SM product from EUMETSAT, in support to NWP re-analysis and climate monitoring.
+      For research and climate change studies a Time-Series product is accessible on a discrete global earth grid.
+      Both soil moisture product families will be disseminated in NetCDF following the CF-conventions.
 
-    \block{Validation Results}{ISMN and ERAINT}
-
-    \block{Access the Data}{
+      \begin{center}
+        \begin{tikzfigure}[Products.\label{figures:escat_products}] 
+          \includegraphics[width=0.6\blockwidth]{figures/WARP_WARPNRT.png}
+        \end{tikzfigure}
+      \end{center}
       
+      \begin{center}
+        \begin{tikzfigure}[ASPS Level 1 spatial resolution.\label{figures:spat_res}] 
+          \includegraphics[width=0.8\blockwidth]{figures/ASPS_resolutions.png}
+        \end{tikzfigure}
+      \end{center}
+ 
+    }
+
+    \block{Validation Results}{
+      A validation study has been carried out in order to analyze the performance of the newly computed ERS ESCAT Soil Moisture Products.
+      The products have been validated against in-situ SM observations from the International Soil Moisture Network (ISMN) and land surface model predictions from ERA-Interim and GLDAS-NOAH.
+
+      \begin{center}
+        \begin{tikzfigure}[ISMN validation results utilizing Triple Collocation method to estimate the Signal to Noise Ratio (SNR)\label{figures:ismn_val}] 
+          \includegraphics[width=0.45\columnwidth]{figures/TripleCol_SNR_R.png}
+        \end{tikzfigure}
+      \end{center}
+
+      \begin{minipage}[t]{0.5\blockwidth}
+        \begin{center}
+          \begin{tikzfigure} 
+            \includegraphics[width=0.49\blockwidth]{figures/WARP_SM_ERAINT_R_ALL_map.png}
+          \end{tikzfigure}
+        \end{center}
+      \end{minipage}
+      \begin{minipage}[t]{0.5\blockwidth}
+        \begin{center}
+          \begin{tikzfigure}
+            \includegraphics[width=0.49\blockwidth]{figures/WARP_SM_GLDAS_R_ALL_map.png}
+          \end{tikzfigure}
+        \end{center}
+      \end{minipage}
+      \begin{minipage}[t]{\blockwidth}
+        \begin{tikzfigure}[Land surface validation]
+          \centering
+        \end{tikzfigure}
+      \end{minipage} 
+    }
+    
+    \block{Access the Data}{ 
     }
 
   \end{columns}
