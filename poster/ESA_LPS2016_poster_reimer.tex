@@ -49,7 +49,7 @@
    \end{enumerate}}};
 
   \node[draw=none, minimum width = 6cm, text width = 25cm, align=justify, inner sep = 1cm, text=white, anchor=west] at (-6,-55) {\textbf{Acknowledgments}\\ The
-    authors would like to acknowledge the European Space Agency (ESA) for the funding of the Scatterometer Competence Center (SCIRoCCo) project. \\ \underline{http://scirocco.sp.serco.eu}};
+    authors would like to acknowledge the European Space Agency (ESA) for the funding of the Scatterometer Competence Center (SCIRoCCo) project. http://scirocco.sp.serco.eu};
 
   \node[draw=none, minimum width = 6cm, right=.5, align=right, text=white, inner sep = 1cm, anchor=west]
   at (23, -55)
@@ -72,24 +72,24 @@
     \column{.5} 
 
     \block{Motivation \phantom{Product Overview}}{
-      The first global Soil Moisture product from the scatterometer (ESCAT) on-board the
+      The first global soil moisture product from the scatterometer (ESCAT) on-board the
       \mbox{ERS-1/2} missions was derived in the year 2002, by making use of the TU~Wien Soil Moisture algorithm~[1, 2].
-      The ERS missions, especially ERS-2, underwent a number of major mission events [Figure~\ref{figure:mission_events}] affecting the final Soil Moisture retrievals.       
-      In the framework of the ESA funded project SCIRoCCo, this data archive was reconsidered with the objective to create the most complete and consistent ESCAT Soil Moisture dataset, taking full advantage of state of the art scatterometer processing facilities.
+      The ERS missions, especially ERS-2, underwent a number of major mission events (Figure~\ref{figure:mission_events}) affecting the final Soil Moisture retrievals~[3].       
+      In the framework of the ESA funded project SCIRoCCo, this data archive was reconsidered with the objective to create the most complete and consistent ESCAT soil moisture dataset, taking full advantage of state of the art scatterometer processing facilities.
       
       \begin{center}
-        \begin{tikzfigure}[Major mission events of ERS-2 and their effect on the final Soil Moisture retrievals from ESCAT.\@ Two major mission events should be noted, the loss of the 5 gyroscopes leading to the so called Zero Gyro Mode, and the on-board tape recorder failure resulting in the Regional Mission Scenario.\label{figure:mission_events}] 
+        \begin{tikzfigure}[Major mission events of ERS-2 and their effect on the final soil moisture retrievals from ESCAT.\@ Two major mission events should be noted, the loss of the 5 gyroscopes leading to the so called Zero Gyro Mode, and the on-board tape recorder failure resulting in the Regional Mission Scenario.\label{figure:mission_events}] 
           \includegraphics[width=0.45\textwidth]{figures/ERS_mission_overview.png}
         \end{tikzfigure}
       \end{center}
     }
 
-    \block{Soil Moisture Retrieval -- Algorithm Improvements}{
+    \block{The WAter Retrieval Package (WARP)}{
       %The TU-Wien soil moisture algorithm is a physically motivated change detection approach implemented in a software called the WAter Retrieval Package (WARP).
       %Since the first release of global soil moisture observations from ESCAT, algorithmic improvements have been implemented into WARP with focus on the retrieval for ASCAT.
       
       \begin{center}
-        \begin{tikzfigure}[Flow chart of the TU Wien Soil Moisture retrieval algorithm implemented in the WAter Retrieval Package (WARP). Indicated algorithmic changes and improvements are given with respect to the previous derived ESCAT SM products based on WARP 5.0.\label{figure:flow_chart}] 
+        \begin{tikzfigure}[Flow chart of the TU Wien soil moisture retrieval algorithm implemented in the WAter Retrieval Package (WARP). Indicated algorithmic changes and improvements are given with respect to the previous derived ESCAT soil moisture products based on WARP 5.0.\label{figure:flow_chart}] 
           \includegraphics[width=0.9\blockwidth]{figures/WARP_processing_steps.pdf}
         \end{tikzfigure}
       \end{center}
@@ -98,19 +98,19 @@
     \column{.5} 
 
     \block{Product Overview \phantom{Motivation}}{
-      Soil Moisture products from ERS ESCAT have been re-processed resulting in a Swath-Grid and a Time-Series product to cover the wide range of applications~[see~ Figure~\ref{figure:escat_products}].
-      The Swath-Grid product is aimed for NWP centers in support to NWP re-analysis and climate monitoring activities [see Figure~\ref{figure:spat_res}].
-      For research and climate change studies a Time-Series product is accessible located on a discrete global earth grid [see Figure~\ref{figure:mission_events}].
-      Both Soil Moisture products are available at two different spatial resolutions with a sampling of 12.5 and 25 km [see Figure~\ref{figure:spat_res}], and will be disseminated in NetCDF following the CF-conventions.\\
+      Soil moisture products from ERS ESCAT have been re-processed resulting in a Swath-Grid and a Time-Series product to cover the wide range of applications~(see~ Figure~\ref{figure:escat_products}).
+      The Swath-Grid product is aimed for NWP centers in support to NWP re-analysis and climate monitoring activities (see Figure~\ref{figure:spat_res}).
+      For research and climate change studies a Time-Series product is accessible located on a discrete global earth grid (see Figure~\ref{figure:mission_events}).
+      Both soil moisture products are available at two different spatial resolutions with a sampling of 12.5 and 25 km (see Figure~\ref{figure:spat_res}), and will be disseminated in NetCDF following the CF-conventions.\\
 
       \begin{center}
-        \begin{tikzfigure}[ERS ESCAT Soil Moisture product generation flow chart depicting the relationship between the Swath-Grid and Time-Series products.\label{figure:escat_products}] 
-          \includegraphics[width=0.65\blockwidth]{figures/WARP_WARPNRT.pdf}
+        \begin{tikzfigure}[ERS ESCAT soil moisture product generation flow chart depicting the relationship between the Swath-Grid and Time-Series products.\label{figure:escat_products}] 
+          \includegraphics[width=0.6\blockwidth]{figures/WARP_WARPNRT.pdf}
         \end{tikzfigure}
       \end{center}
       
       \begin{center}
-        \begin{tikzfigure}[Illustration of the different spatial resolutions of the Level 1 input dataset used for Soil Moisture retrieval at TU~Wien.\label{figure:spat_res}] 
+        \begin{tikzfigure}[Illustration of the different spatial resolutions of the Level 1 input dataset used for soil moisture retrieval at TU~Wien.\label{figure:spat_res}] 
           \includegraphics[width=0.9\blockwidth]{figures/ASPS_resolutions.png}
         \end{tikzfigure}
       \end{center}
@@ -118,17 +118,17 @@
     }
 
     \block{Validation Results}{
-      A validation study has been carried out in order to analyze the performance of the newly computed ESCAT Soil Moisture Products.
-      The products have been validated against in-situ SM observations from the International Soil Moisture Network (ISMN) [see Figure~\ref{figure:ismn_val}] and ERA-interim modeled soil moisture [see Figure~\ref{figure:lsm_val}].
+      A validation study has been carried out in order to analyze the performance of the re-processed ESCAT soil moisture products.
+      The products have been validated against in-situ observations from the International Soil Moisture Network (ISMN) (see Figure~\ref{figure:ismn_val}) and ERA-interim modeled soil moisture (see Figure~\ref{figure:lsm_val}).
 
       \begin{center}
         \begin{tikzfigure}[ISMN validation results utilizing Triple Collocation technique to estimate the Signal to Noise Ratio (SNR) in addition to Pearson R coefficient. Results are only shown for statistical significant correlations~(p~>~0.05).\label{figure:ismn_val}] 
-          \includegraphics[width=\blockwidth]{figures/TripleCol_SNR_R.png}
+          \includegraphics[width=0.95\blockwidth]{figures/TripleCol_SNR_R.png}
         \end{tikzfigure}
       \end{center}
 
       \begin{center}
-        \begin{tikzfigure}[Pearson Correlation Coefficient R between the derived ESCAT Soil Moisture Time-Series and ERA-interim modeled Soil Moisture. Results are only shown for statistical significant correlations (p > 0.05).\label{figure:lsm_val}] 
+        \begin{tikzfigure}[Pearson correlation coefficient R between the derived ESCAT soil moisture Time-Series and ERA-interim modeled soil moisture. Results are only shown for statistical significant correlations (p > 0.05).\label{figure:lsm_val}] 
           \includegraphics[width=0.84\blockwidth]{figures/WARP_SM_ERAINT_R_ALL_map.png}
         \end{tikzfigure}
       \end{center}
