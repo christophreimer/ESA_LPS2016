@@ -27,20 +27,18 @@
 
 \usepackage{times}
 \usepackage{natbib}
+\usepackage{graphicx}
 
-\title{A \LaTeX\ Class File for ESA Proceedings}
-\author{Patrick W. Daly}
-\author{A. N. Other}
-\affil{Max-Planck-Institut f\"ur Aeronomie, 37191 Katlenburg-Lindau, Germany}
-\author{F. Favata}
-\affil{Astrophysics Division, ESTEC, 2200 AG Noordwijk, The Netherlands}
+\title{An enhanced Soil Moisture product from ERS scatterometers}
+\author{Christoph Reimer}
+\author{Isabella Pfeil}
+\author{Wolfgang Wagner}
+\affil{TU Wien, Department of Geodesy and Geoinformation, Research Group Remote Sensing}
 
 \newcommand{\btx}{\textsc{Bib}\TeX}
 \newcommand{\filename}{esapub}
 
 \begin{document}
-
-\keywords{\LaTeX; ESA; macros}
 
 \maketitle
 
@@ -54,385 +52,98 @@ author and affiliation names. \btx\ support is provided as a bibliography
 style file for the publicly available package \texttt{natbib}.
 \end{abstract}
 
+\keywords{Soil Moisture;ERS;scatterometer}
+
 \section{Introduction}
+Active microwave remote sensing has a long heritage in the European earth observation programme, initiated with the launch of the European Remote Sensing satellite ERS-1 in 1991.
+ERS-1 was equipped with a sophisticated C-band scatterometer (ESCAT) providing insights into ocean and land surface dynamics of the Earth.
+Because of the great success of the ERS-1 mission, the follow-on mission ERS-2 was launched in 1995 carrying an identical constructed C-band scatterometer.
+After 9 years of excellent performance, ERS-1 was decommissioned in the year 2000, followed by ERS-2 in 2011 after almost 16 years in space.
+Global C-band scatterometer observations from ESCAT on-board of ERS-1 and ERS-2 comprise a unique data archive covering a period of about 20 years.
+The first global soil moisture product from the scatterometer (ESCAT) on-board the ERS-1/2 missions was derived in the year 2002, by making use of the TU~Wien Soil Moisture algorithm~[1, 2].
+The ERS missions, especially ERS-2, underwent a number of major mission events (Figure~\ref{figure:mission_events}) affecting the final Soil Moisture retrievals~[3].
+In the framework of the ESA funded project SCIRoCCo, this data archive was reconsidered with the objective to create the most complete and consistent ESCAT soil moisture dataset, taking full advantage of state of the art scatterometer processing facilities.
+ 
 
-This is a \LaTeXe\ class based on the standard \texttt{article} class for
-generating camera-ready copy of conference proceedings for publication by
-the European Space Agency.
-
-It conforms to the specifications for ESA conference proceedings:
-\begin{itemize}
-\item 23.5\,cm high and 17\,cm wide;
-\item if two columns, they have 1\,cm between them;
-\item 10\,pt font on 11\,pt, Times Roman preferred;
-\item all titles in upper case
-\end{itemize}
-
-Compatibility with standard \LaTeX\ is maintained as much as possible in
-order to simplify the transfer of text from or to another format. The
-only additional features are the \verb!\keyword! command and the entry of
-authors and affiliations.
-
-It replaces the \LaTeX~2.09 style file that has been previously provided
-by the ESA.
-
-For an excellent manual on using \LaTeX, see Kopka \& Daly, \emph{A Guide
-to \LaTeX}, 3rd ed., 1999, Addison Wesley Longman.
-
-\section{Invoking the Class}
-
-The class file is invoked with the \verb!\documentclass! command, as
-
-\verb!\documentclass[a4paper,twocolumn]{!\texttt{\filename}\verb!}!
-
-where the option \texttt{a4paper} may be replaced by \texttt{letterpaper}
-(the default) for American installations. The text will be centered on the
-specified paper type. The \texttt{twocolumn} option is given if the
-publication is to be in two columns per page.
-
-\subsection{Other Packages}
-
-There are other (nearly) standard packages that may be included with
-the \verb!\usepackage! command:
-\begin{itemize}
-\item \texttt{times} to use TimesRoman instead of Computer Modern (\TeX)
-   fonts ,
-\item \texttt{graphicx} or \texttt{epsfig} for importing figures (see
-   Section~\ref{sec:grf}),
-\item \texttt{natbib} to use author--year citations with \btx\ (see
-    Section~\ref{sec:refs}).
-\end{itemize}
-
-The author may have his or her own extra packages, such as
-\texttt{amsmath} for advanced mathematical formatting.
-
-\section{Non-standard Features}
-
-A list of key words is to be printed below the abstract. They are entered
-\emph{anywhere before the abstract environment} with the \verb!\keywords!
-command.
-\begin{verbatim}
-\keywords{space; plasmas; electrons}
-\begin{abstract}
-. . .
-\end{abstract}
-\end{verbatim}
-
-Each author name should be entered with an \verb!\author! command. Give
-the affiliation with the \verb!\affil! command after all authors of the
-same affiliation. They will then be listed with a common footnote number.
-\begin{verbatim}
-\author{Donald P. Duck}
-\author{Mickey C. Mouse}
-\affil{Disney Studios, CA USA}
-\author{Bugs G. Bunny}
-\affil{Warner Bros. Studios}
-\end{verbatim}
-produces
-\begin{center}
-Donald P. Duck\textsuperscript{1}, Mickey C. Mouse\textsuperscript{1},
-Bugs G. Bunny\textsuperscript{2}\\[0.5ex]
-\textsuperscript{1}Disney Studios, CA USA\\
-\textsuperscript{2}Warner Bros. Studios
-\end{center}
-
-For more control over the footnote numbers, one can give them explicitly
-as optional arguments to \verb!\author! and \verb!\affil!:
-\begin{verbatim}
-\author[*]{Donald P. Duck}
-\author[\dag]{Bugs G. Bunny}
-\author[*]{Mickey C. Mouse}
-\affil[*]{Disney Studios, CA USA}
-\affil[\dag]{Warner Bros. Studios}
-\end{verbatim}
-to obtain
-\begin{center}
-Donald P. Duck\textsuperscript{*},
-Bugs G. Bunny\textsuperscript{\dag},
-Mickey C. Mouse\textsuperscript{*}\\[0.5ex]
-\textsuperscript{*}Disney Studios, CA USA\\
-\textsuperscript{\dag}Warner Bros. Studios
-\end{center}
-
-
-\section{Structure of the Document}
-
-Except for the above features, the \texttt{\filename} class is identical to
-the standard \texttt{article} class, as far as input is concerned. The
-document should be organized as usual.
-
-\noindent
-\begin{small}
-\itshape
-\verb!\documentclass[a4paper,twocolumn]{!\texttt{\upshape\filename}\verb!}!\\
-\% Any extra packages\\
-\verb!\usepackage{times,natbib,graphicx,...}!\\
-\% Title and authors\\
-\verb!\title{!Title text\verb!}!\\
-\verb!\author{!First Author\verb!}!\dots\\
-\verb!\affil{!First affiliation\verb!}!\\
-\dots\\
-\% Start of body\\
-\verb!\begin{document}!\\
-\verb!\maketitle!\\
-\% Keywords and abstract\\
-\verb!\keywords{!keyword1; keyword2; \dots\verb!}!\\
-\verb!\begin{abstract}!\\
-Text of abstract\\
-\verb!\end{abstract}!\\
-\% Main text\\
-\verb!\section{!Heading\verb!}!\\
-Text\\
-\verb!\subsection{!Sub-heading\verb!}!\\
-Text\\
-\verb!\section*{Acknowledgments}!\\
-Acknowledgment text\\
-\% Bibliography (Section~\ref{sec:refs})\\
-\verb!\bibliographystyle{aa}!\\
-\verb!\bibliography{!database name\verb!}!\\
-\% Termination\\
-\verb!\end{document}!
-\end{small}
-
-\begin{figure*}
-\centering
-\vspace{4cm}
-\caption{Sample figure showing how an encapsulated PostScript graphic may
-be included. This example is for a double column figure, which does cause
-more placement problems than single column ones.\label{fig:double}}
-\end{figure*}
-
-\section{Bibliographic References}
-
-Citations to bibliographic references are to be of the author--year
-style. This may be done manually or with the help of
-\texttt{natbib} package and \btx\ with the supplied \texttt{aa.bst}
-bibliographic style file.
-
-\subsection{Manual Citations}
-
-The citations are either parenthetical \citep{smith96} or in-text
-as shown by \citet{allen73} and elaborated on by \citet{nobody97}.
-
-The list of references is placed at the end of the article, as
-\begin{small}
-\begin{verbatim}
-\begin{thebibliography}{}
-\bibitem{}
-  Allen C., 1973, Astrophysical Quantities,
-  Athlone Press
-\bibitem{}
-  Nobody B., Somebody G., Who M.E., et~al.,
-  1997, ApJ 331, 902
-\bibitem{}
-  Smith A., Jones B., 1996, A\&A 555, 999
-\end{thebibliography}
-\end{verbatim}
-\end{small}
-Note the empty braces after \verb!\bibitem! and after
-\verb!\begin{thebibliography}!
-
-The format of the reference list is that used by \emph{Astronomy and
-Astrophysics} and other astronomy journals.
-
-\subsection{References with \texttt{natbib}}\label{sec:refs}
-
-\renewcommand{\/}{\discretionary{/}{}{/}}
-The \texttt{natbib} package is a powerful tool for extending the citation
-and bibliography features of standard \LaTeX. It is included in most
-modern installations these days.%
-\footnote{Otherwise it may be obtained from
-\texttt{ftp:\//ctan.tug.org\/tex-archive\/macros\/latex\/contrib\/supported\/natbib}
-or from the other CTAN servers or from almost any CD-ROM distribution of
-\TeX/\LaTeX.}
-
-With \texttt{natbib}, in-text citations are generated with
-\verb!\citet{allen73}! to yield ``\citet{allen73}'' while parenthetical
-ones are made with \verb!\citep{smith96}! for \citep{smith96}. There are
-many other possibilities, such as \verb!\citeauthor! for the authors
-without year. See the \texttt{natbib} documentation.
-
-With \texttt{natbib} the bibliography must be entered differently, at
-least the \verb!\bibitem! entries.
-\begin{small}
-\begin{verbatim}
-\bibitem[Allen(1973)]{allen73}
-. . .
-\bibitem[Nobody et~al.(1997)]{nobody97}
-. . .
-\bibitem[Smith \& Jones(1996)]{smith96}
-. . .
-\end{verbatim}
-\end{small}
-The text in square brackets contains the author and year information,
-with the year part in parentheses, no space before, which is used by the
-\verb!\citet! and \verb!\citep! commands.
-
-Rather than trying to make up the \texttt{thebibliography} environment
-manually with all its intricate details, one can let \btx\ do it, if the
-references are already in an appropriate database file. For this
-purpose, a bibliographic style file \texttt{aa.bst} is provided with
-\texttt{\filename.cls}, designed to produce output formatted for
-\emph{Astronomy and Astrophysics} and the \texttt{natbib} package. In
-this case, one replaces the \texttt{thebibliography} environment with
-\begin{flushleft}
-\verb!\bibliographystyle{aa}!\\
-\verb!\bibliography{!\emph{bib file names}\verb!}!
-\end{flushleft}
-One processes the \LaTeX\ file once, then \btx, and then the \LaTeX\ file
-at least twice. This need only be repeated if the citations have added
-or deleted in the text.
-
-\section{Figures and Tables}
-
-Figures and tables are inserted with the normal \LaTeX\ environments
-\texttt{figure} and \texttt{table}. They are numbered automatically and
-one refers to the numbers with the \verb!\label! and \verb!\ref! system.
-
-\subsection{Figures}\label{sec:grf}
+In the framework of the ESA funded project SCIRoCCo (Scatterometer Instrument Competence Centre), this data archive was reconsidered with the objective to generate the most complete and consistent ESCAT dataset.
+TU Wien is one of the project consortium members regarded as the reference laboratory for soil moisture (SM) retrieval from scatterometers.
+Accordingly, TU Wien undertake the generation of an up-to-date ESCAT SM dataset based on re-processed Level 1 backscatter data.
+In this study the major project achievements with respect to the production of the most complete ESCAT SM data archive are presented.
+First, the high radiometric quality of the re-processed Level 1 backscatter data is demonstrated with reference to well defined calibration targets.
+Furthermore, enhancements of the TU Wien soil moisture algorithm are discussed covering an improved SM error characterisation and improvements in the model parameter estimation.
+Finally, results of a comprehensive validation of the obtained SM product in comparison to in-situ measurements and soil moisture estimates from land surface models are presented.
 
 \begin{figure}
-\centering
-\vspace{4cm}
-\caption{Sample figure showing how an encapsulated PostScript graphic may
-be included. This example is for a single column figure.\label{fig:single}}
+  \centering
+  \includegraphics[width=1.\linewidth]{../poster/figures/ERS_mission_overview.png}
+  \caption{Major mission events of ERS-2 and their effect on the final soil moisture retrievals from ESCAT.\@ Two major mission events should be noted, the loss of the 5 gyroscopes leading to the so called Zero Gyro Mode, and the on-board tape recorder failure resulting in the Regional Mission Scenario.\label{figure:mission_events}}
 \end{figure}
 
-The \texttt{figure} environment is used to enter a single column figure
-such as Figure~\ref{fig:single}, while \texttt{figure*} is for double
-column figures (Figure~\ref{fig:double}).
+\section{The WAter Retrieval Package (WARP)}
+The TU-Wien soil moisture algorithm is a physically motivated change detection approach implemented in a software called the WAter Retrieval Package (WARP).
+Since the first release of global soil moisture observations from ESCAT in 2002, algorithmic updates and improvements have been implemented into WARP.
+In view of the SCIRoCCo project, latest algorithmic changes, previously specially tailored to ASCAT, have been adopted to extent the soil moisture retrieval capabilities also to ESCAT.
+As a consequence, WARP was implemented from scratch in Python taking advantage of this community drive programming language and external packages.
 
-\begin{small}
-\begin{verbatim}
+The first step in the WARP processing chain has the objective to create backscatter time-series from the Level 1b ESCAT data in swath-geometry.
+This is done by spatial interpolation (re-sampling) of the radar backscatter to a discrete global earth grid (DGG), which is a computation intensive task.
+With respect to that, the spatial re-sampling strategy was completely redesigned with a strong focus on parallel processing capabilities in addition to updates in data quality and orbit propagation checks. 
+
+In order to guarantee the consistency and stability of the Level 1 scatterometer observations, the normalized radar cross section, a sensor intra-calibration method is introduced [ref Master thesis].
+The objective of intra-calibration is to detect and remove senor related biases of a specific or among different instrument antennas by making use of natural calibration targets such as the Amazon Rainforest.
+
+The land surface state can change over the year mostly related to changes in temperature from freezing to thawing conditions or perhaps standing water on the surface.
+To account for such land surface state changes affecting the backscatter and consequently the final soil moisture retrieval, a freeze/thaw classification step is introduced based on external temperature data from ERA-interim [ref to ERA-interim].
+This classification was initially develop and tested for ASCAT and was updated and transferred recently to ESCAT.
+
+Scatterometer Level 1 backscatter observations have to be normalised according to their observation geometry to make them comparable over time. Furthermore, the exploitation of a change detection algorithm for soil moisture retrieval requires knowledge about the driest and wettest observed backscatter. These references are assume to represent the backscatter for completely unsaturated soil conditions (dry-reference) and saturated soil (wet-reference).
+Because of the importance of a robust estimation of the dry- and wet-reference this processing step was improved by making use of a statistical outlier detection scheme incorporating backscatter error estimates.
+
+In very dry regions it is impossible to derive a realistic estimate of the wet-reference, because of the lack strong rain events resulting in completely saturated soil conditions. Therefore, a wet-correction is applied by facilitating an external climate map to identify such very dry regions like desserts. 
+
 \begin{figure}
-\centering
-\includegraphics[width=0.8\linewidth]{sample.eps}
-\caption{Sample figure showing how an encapsulated
-PostScript graphic may be included. This example
-is for a single column figure.\label{fig:single}}
+  \centering
+  \includegraphics[width=1.\linewidth]{../poster/figures/WARP_processing_steps.pdf}
+  \caption{Flow chart of the TU Wien soil moisture retrieval algorithm implemented in the WAter Retrieval Package (WARP). Indicated algorithmic changes and improvements are given with respect to the previous derived ESCAT soil moisture products based on WARP 5.0.\label{figure:flow_chart}}
+\end{figure}  
+
+\section{Product Overview}
+Soil moisture products from ERS ESCAT have been re-processed resulting in a Swath-Grid and a Time-Series product to cover the wide range of applications (see Figure \ref{figure:escat_products}).
+The Swath-Grid product is aimed for NWP centers in support to NWP re-analysis and climate monitoring activities (see Figure \ref{figure:spat_res}).
+For research and climate change studies a Time-Series product is accessible located on a discrete global earth grid (see Figure \ref{figure:mission_events}).
+Both soil moisture products are available at two different spatial resolutions with a sampling of 12.5 and 25 km (see Figure \ref{figure:spat_res}), and will be disseminated in NetCDF following the CF-conventions.\\
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1.\linewidth]{../poster/figures/WARP_WARPNRT.pdf}
+  \caption{ERS ESCAT soil moisture product generation flow chart depicting the relationship between the Swath-Grid and Time-Series products.\label{figure:escat_products}}
 \end{figure}
-\end{verbatim}
-\end{small}
-One can then refer to this figure with \verb!Figure~\ref{fig:single}!, producing
-``Figure~\ref{fig:single}''.
 
-The \verb!\includegraphics! command is made available with the
-\texttt{graphicx} package and allows the importation of graphic files.
-For PostScript output (with the \texttt{dvips} program) these graphics
-must adhere to the \emph{encapsulated} PostScript standard.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../poster/figures/ASPS_resolutions.png}
+  \caption{Illustration of the different spatial resolutions of the Level 1 input dataset used for soil moisture retrieval at TU~Wien.\label{figure:spat_res}}
+\end{figure}
 
-Many users are familiar with the \verb!\epsfig! available with the
-\texttt{epsfig} package. With this the syntax is slightly different:
-\begin{small}
-\begin{verbatim}
-\epsfig{file=sample.eps,width=0.8\linewidth}
-\end{verbatim}
-\end{small}
-(In fact, the \texttt{epsfig} package uses the \texttt{graphicx} package
-so in the end they do exactly the same thing.)
 
-The same syntax can also be used with pdf\TeX, a variant on the \TeX\
-program producing PDF output directly. In this case, the figures must be
-in PDF, PNG, or JPEG format. It is not necessary to include the extension
-in the file name (\texttt{file=sample} suffices), something that makes
-the \LaTeX\ text more general for both normal \TeX\ and pdf\TeX. (It may
-however be necessary to add the option \texttt{[pdftex]} when loading the
-graphics packages.)
+\section{Validation}
 
-\subsection{Tables}
-\begin{table}
-  \begin{center}
-    \caption{A sample table illustrating usage of the \LaTeX{} table
-      environment.}\vspace{1em}
-    \renewcommand{\arraystretch}{1.2}
-    \begin{tabular}[h]{lrcc}
-      \hline
-      First column & Col. 2      &  Col. 3      &  V mag \\
-      \hline
-      row 1  & 11.0 & 25.0 & 12 \\
-      row 2  & 11.0 & 25.0 & 12 \\
-      row 3  & 11.0 & 25.0 & 12 \\
-      row 4  & 11.0 & 25.0 & 12 \\
-      row 5  & 11.0 & 25.0 & 12 \\
-      \hline \\
-      \end{tabular}
-    \label{tab:table}
-  \end{center}
-\end{table}
+\begin{figure}
+  \centering
+  \includegraphics[width=1.\linewidth]{../poster/figures/TripleCol_SNR_R.png}
+  \caption{ISMN validation results utilizing Triple Collocation technique to estimate the Signal to Noise Ratio (SNR) in addition to Pearson R coefficient. Results are only shown for statistical significant correlations~(p~$>$~0.05).\label{figure:ismn_val}}
+\end{figure}
 
-Tables are placed and numbered and referred to with the \texttt{table}
-and \texttt{table*} environments. The contents of the table are normally
-entered with the \texttt{tabular} or \texttt{tabbing} environments. The
-\verb!\caption! now comes at the top of the table, before the table
-contents.
+\begin{figure}
+  \centering
+  \includegraphics[width=1.\linewidth]{../poster/figures/WARP_SM_ERAINT_R_ALL_map.png}
+  \caption{Pearson correlation coefficient R between the derived ESCAT soil moisture Time-Series and ERA-interim modeled soil moisture. Results are only shown for statistical significant correlations~(p~$>$~0.05).\label{figure:lsm_val}}
+\end{figure} 
 
-\section{Equations}
-Formulae which appear in the running text should be enclosed in
-\texttt{\$} signs. For example, to produce the equation $a^2 + b^2 = c^2$
-within a paragraph type \verb!$a^2 + b^2 = c^2$!. Displayed formulae are
-produced using the \verb!\begin{equation}! and \verb!\end{equation}!
-commands (see Equation~\ref{eq:equation1}). This produces equations which
-are automatically numbered sequentially throughout your paper. Equations
-which should appear together can be formatted using
-\verb!\begin{eqnarray}! and \verb!\end{eqnarray}! as for
-Equations~\ref{eq:equation2} and \ref{eq:equation3}:
-\begin{equation}
- \Delta{\hat a}_i = \sum_j {\partial f_i \over \partial a_j}
-\Delta a_j
-\label{eq:equation1}
-\end{equation}
-\begin{eqnarray}
-\alpha &= &\alpha_0 + (T-T_0)\,\mu_{\alpha *0}\,{\rm sec}\,\delta_0
-\label{eq:equation2}\\
-\delta &= &\delta_0 + (T-T_0)\,\mu_{\delta 0} \label{eq:equation3}
-\end{eqnarray}
-
-When in math mode (i.e.\ within the \texttt{equation} or
-\texttt{eqnarray} environment) all letters appear in italics. However,
-the preferred notation is for subscripts, superscripts\footnote{Except
-when the superscript or subscript are variables.} and text within the
-equation to be typeset as roman. To achieve this use the
-\verb!{\mbox{..}}! command. Thus,
-\verb!$T_{\mbox{eff}}=5.8\times10^{3}$~K! produces
-$T_{\mbox{eff}}=5.8\times10^{3}$~K. Note that units should be tied to the
-numerical value using \verb!~! and should always be in roman font (the
-default outside of math mode).
-
-\section{Final Manuscripts}
-\subsection{Preparation of Final Manuscripts}
-There is an upper limit of eight pages for an Invited paper, six pages
-for Contributed papers and four pages for Poster papers.
-
-You should use the standard \LaTeX{} command, in conjunction with the
-style file provided, esapub.sty, to produce the final output.  If
-using dvips places the final PostScript file lower on the page than
-appears to be reasonable, try using the qualifier `-t a4' with dvips.
-
-\subsection{Submission of Final Manuscripts}
-Please refer to the conference guidelines for submission instructions.
+\section{Conclusions}
 
 \section*{Acknowledgments}
 
-The section containing acknowledgments should use the \verb!\section*!
-form, as shown, to prevent it from being numbered.
-
-% The following bibliography was produced with
-%   \bibliographystyle{aa}
-%   \bibliography{esapub}
-% The results are inserted directly here to simplify
-% the demonstration.
-
-\begin{thebibliography}{}
-\bibitem[Allen(1973)]{allen73}
-Allen C., 1973, Astrophysical Quantities, Athlone Press
-
-\bibitem[Nobody et~al.(1997)]{nobody97}
-Nobody B., Somebody G., Who M.E., et~al., 1997, ApJ 331, 902
-
-\bibitem[Smith \& Jones(1996)]{smith96}
-Smith A., Jones B., 1996, A\&A 555, 999
-
-\end{thebibliography}
 \end{document}
 %%
 %% <<<<< End of generated file <<<<<<
